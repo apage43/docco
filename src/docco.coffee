@@ -170,6 +170,10 @@ languages =
     name: 'c', symbol: '//', suffix: '.h'
   '.h':
     name: 'c', symbol: '//', suffix: '.h'
+  '.cc':
+    name: 'cpp', symbol: '//', suffix: '.cc'
+  '.hh':
+    name: 'cpp', symbol: '//', suffix: '.hh'
 
 # Build out the appropriate matchers and delimiters for each language.
 for ext, l of languages
