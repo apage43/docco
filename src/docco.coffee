@@ -167,9 +167,9 @@ languages =
   '.latex':
     name: 'tex', symbol: '%'
   '.c':
-    name: 'c', symbol: '//'
+    name: 'c', symbol: '//', suffix: '.h'
   '.h':
-    name: 'c', symbol: '//'
+    name: 'c', symbol: '//', suffix: '.h'
 
 # Build out the appropriate matchers and delimiters for each language.
 for ext, l of languages
@@ -196,7 +196,8 @@ get_language = (source) -> languages[path.extname(source)]
 # Compute the destination HTML path for an input source file path. If the source
 # is `lib/example.coffee`, the HTML will be at `docs/example.html`
 destination = (filepath) ->
-  'docs/' + path.basename(filepath, path.extname(filepath)) + '.html'
+  suffix = (languages[path.extname(filepath)].suffix or '')
+  'docs/' + path.basename(filepath, path.extname(filepath)) + suffix + '.html'
 
 # Ensure that the destination directory exists.
 ensure_directory = (dir, callback) ->
